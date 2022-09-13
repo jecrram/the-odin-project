@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Cardio 💪</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <div class="book-card-wrapper">
+      <div class="book-card">
+        <h3 class="book-card__title">The Hobbit</h3>
+        <p class="book-card__author">Jermey</p>
+        <p class="book-card__pages"></p>
+        <p class="book-card__read"></p>
+      </div>
+    </div>
+    <button class="btn--add-book">NEW BOOK</button>
+    <!-- Modal for form -->
+    <div class="book-form-modal">
+      <span class="close">&times;</span>
+      <p>Some text in the Modal..</p>
+      <form action="submit" class="book-form" method="POST">
+        <input type="text">
+        <input type="text">
+        <input type="number">
+        <input type="checkbox">
+        <button class="book-form__submit-btn" type="submit">Add book</button>
+      </form>
+
+    </div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
