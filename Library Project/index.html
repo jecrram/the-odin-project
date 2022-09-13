@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Array Cardio 💪</title>
+    <title>Library Project 💪</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -13,28 +13,59 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-    <div class="book-card-wrapper">
-      <div class="book-card">
-        <h3 class="book-card__title">The Hobbit</h3>
-        <p class="book-card__author">Jermey</p>
-        <p class="book-card__pages"></p>
-        <p class="book-card__read"></p>
+    <section class="book-showcase">
+      <div class="book-card-wrapper">
+        <div class="book-card">
+          <h3 class="book-card__title">The Hobbit</h3>
+          <p class="book-card__author">J. R. R. Tolkien</p>
+          <p class="book-card__pages">542</p>
+          <p class="book-card__read">Done reading</p>
+        </div>
+        <div class="book-card">
+          <h3 class="book-card__title">The Hobbit</h3>
+          <p class="book-card__author">J. R. R. Tolkien</p>
+          <p class="book-card__pages">542</p>
+          <p class="book-card__read">Done reading</p>
+        </div>
+        <div class="book-card">
+          <h3 class="book-card__title">The Hobbit</h3>
+          <p class="book-card__author">J. R. R. Tolkien</p>
+          <p class="book-card__pages">542</p>
+          <p class="book-card__read">Done reading</p>
+        </div>
+        <div class="book-card">
+          <h3 class="book-card__title">The Hobbit</h3>
+          <p class="book-card__author">J. R. R. Tolkien</p>
+          <p class="book-card__pages">542</p>
+          <p class="book-card__read">Done reading</p>
+        </div>
+        <div class="book-card">
+          <h3 class="book-card__title">The Hobbit</h3>
+          <p class="book-card__author">J. R. R. Tolkien</p>
+          <p class="book-card__pages">542</p>
+          <p class="book-card__read">Done reading</p>
+        </div>
       </div>
-    </div>
-    <button class="btn--add-book">NEW BOOK</button>
+    </section>
+    <section class="book-options">
+      <div class="book-options__copy">
+        <h2 class="book-options__title">Didn't find your book?</h2>
+        <p class="book-options__text">Add your favorite book using the button below.</p>
+      </div>
+      <button class="btn--add-book">NEW BOOK</button>
+    </section>
     <!-- Modal for form -->
     <div class="book-form-modal">
       <span class="close">&times;</span>
       <p>Some text in the Modal..</p>
       <form action="submit" class="book-form" method="POST">
-        <input type="text">
-        <input type="text">
-        <input type="number">
-        <input type="checkbox">
+        <input type="text" placeholder="Insert book name" id="book-name" />
+        <input type="text" placeholder="Insert author" id="book-author" />
+        <input type="number" placeholder="Insert page number" id="book-pages" />
+        <label for="read-status">Have you read the book?</label>
+        <input type="checkbox" name="read-status" id="read-status" />
         <button class="book-form__submit-btn" type="submit">Add book</button>
       </form>
-
-    </div>
     </div>
     <script type="text/javascript" src="main.js"></script>
   </body>
