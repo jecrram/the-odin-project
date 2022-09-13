@@ -1,6 +1,50 @@
 const bookCardContainer = document.querySelector(".book-card-wrapper");
+const bookTitle = document.querySelector("#book-name");
+const bookAuthor = document.querySelector("#book-author");
+const bookPages = document.querySelector("#book-pages");
+const readStatus = document.querySelector("#read-status");
+const bookSubmit = document.querySelector(".book-form__submit-btn")
 
+bookSubmit.addEventListener('click', function (e) {
+  e.preventDefault()
+  bookTitle.value
+  bookAuthor.value
+  bookPages.value
+  console.log(readStatus.checked)
+})
 // console.log(bookCardContainer)
+
+// Constructor function - old way
+function Book(title, author, pages, read) {
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.read = read
+
+  // this.info = function () {
+  //   return `${title} by ${author}. ${pages} pages, ${read}`
+  // }
+}
+
+function addBookToLibrary() {
+
+}
+
+// Since we don't want to add methods to the new Book instance every time, we add the method to prototype
+Book.prototype.getInfo = function () {
+  return `${this.title} by ${this.author}. ${this.pages} pages, ${this.read}`
+}
+
+const theHobbit = new Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
+const lordOfTheRings = new Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
+const harryPotter = new Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
+
+//However the recommended method of setting specified prototypes is using Object.create(proto,)
+// theHobbit.prototype = Object.create(Book.prototype)
+
+console.log(theHobbit.getInfo())
+
+
 
 // function Book(title, author, pages, read) {
 //   this.title = title;
