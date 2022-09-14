@@ -34,14 +34,19 @@ function addBookToLibrary(e) {
 
   //Create
   const div = document.createElement('div');
+  const button = document.createElement('button');
   div.classList.add('book-card');
+  button.classList.add('remove-btn');
+  button.innerText = 'Delete';
+  button.addEventListener('click', removeBook)
+  console.log(button)
   div.innerHTML = `
   <h3 class="book-card__title">${obj.title}</h3>
   <p class="book-card__author">${obj.author}</p>
   <p class="book-card__pages">${obj.pages}</p>
-  <p class="book-card__read">${obj.read}</p>
-  <button class="remove-btn">Delete</button>`;
-  bookCardContainer.appendChild(div)
+  <p class="book-card__read">${obj.read}</p>`;
+  div.appendChild(button)
+  bookCardContainer.appendChild(div);
 
   //Clear
   bookTitle.value = "", bookAuthor.value = "", bookPages.value = null, readStatus.value = "";
