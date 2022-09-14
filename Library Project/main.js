@@ -4,7 +4,6 @@ const bookAuthor = document.querySelector("#book-author");
 const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const bookSubmit = document.querySelector(".book-form__submit-btn");
-const bookRemoveBtns = document.querySelectorAll(".book-card__remove-btn");
 
 let myLibrary = []
 
@@ -25,14 +24,8 @@ const theHobbit = new Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading'
 const lordOfTheRings = new Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
 const harryPotter = new Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
 
+
 myLibrary = [theHobbit, lordOfTheRings, harryPotter]
-
-
-console.log(myLibrary)
-
-
-bookSubmit.addEventListener('click', addBookToLibrary)
-
 
 function addBookToLibrary(e) {
   e.preventDefault()
@@ -47,43 +40,48 @@ function addBookToLibrary(e) {
   <p class="book-card__author">${obj.author}</p>
   <p class="book-card__pages">${obj.pages}</p>
   <p class="book-card__read">${obj.read}</p>
-  <button class="book-card__remove-btn">Delete</button>`;
+  <button class="remove-btn">Delete</button>`;
   bookCardContainer.appendChild(div)
 
   //Clear
   bookTitle.value = "", bookAuthor.value = "", bookPages.value = null, readStatus.value = "";
 }
 
-console.log(myLibrary)
-
-// window.addEventListener('onload', () => {
-//   displayBooks();
-// })
-
-
 function displayBooks() {
   return myLibrary.forEach(book => {
-    console.log(book)
     const div = document.createElement('div');
+    const button = document.createElement('button');
     div.classList.add('book-card');
+    button.classList.add('remove-btn');
+    button.innerText = 'Delete';
+    button.addEventListener('click', removeBook)
+    console.log(button)
     div.innerHTML = `
     <h3 class="book-card__title">${book.title}</h3>
     <p class="book-card__author">${book.author}</p>
     <p class="book-card__pages">${book.pages}</p>
-    <p class="book-card__read">${book.read}</p>
-    <button class="book-card__remove-btn">Delete</button>`;
-    bookCardContainer.appendChild(div)
+    <p class="book-card__read">${book.read}</p>`;
+    div.appendChild(button)
+    bookCardContainer.appendChild(div);
+
+
   })
 }
 
-
-
-bookRemoveBtns.forEach((btn) => {
-  console.log(btn);
+document.addEventListener('DOMContentLoaded', () => {
+  displayBooks();
 })
 
-function removeBook() {
+bookSubmit.addEventListener('click', addBookToLibrary)
 
+function removeBook(e) {
+  const searchBook = e.target.parentElement.firstElementChild.innerText
+
+  myLibrary.forEach((book, ind) => {
+    if (book.title === searchBook) myLibrary.splice(ind, 1);
+  })
+
+  e.target.parentElement.remove()
 }
 
-displayBooks();
+const bookRemoveBtns = document.querySelectorAll(".remove-btn");
