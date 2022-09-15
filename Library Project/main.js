@@ -1,3 +1,4 @@
+//Define variables already in the DOM
 const bookCardContainer = document.querySelector(".book-card-wrapper");
 const bookTitle = document.querySelector("#book-name");
 const bookAuthor = document.querySelector("#book-author");
@@ -5,88 +6,104 @@ const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const bookSubmit = document.querySelector(".book-form__submit-btn");
 
+// Define array for all books
 let myLibrary = []
 
-// Constructor function - old way
-function Book(title, author, pages, read) {
+// 1. The old way of creating objects - with constructor functions
+function Book(title, author, pages, readStatus) {
   this.title = title
   this.author = author
   this.pages = pages
-  this.read = read
+  this.readStatus = readStatus
 }
 
-// Since we don't want to add methods to the new Book instance every time, we add the method to prototype
-Book.prototype.getInfo = function () {
-  return `${this.title} by ${this.author}. ${this.pages} pages, ${this.read}`
-}
+// Add method on the prototype so it's accessible to all sub-objects
+Book.prototype.getInfo = () => `${this.title} by ${this.author}. ${this.pages} pages, ${this.readStatus}`
 
+
+// Instantiating new objects
 const theHobbit = new Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
 const lordOfTheRings = new Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
 const harryPotter = new Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
 
-
+// Inserting those objects into the array
 myLibrary = [theHobbit, lordOfTheRings, harryPotter]
 
-function addBookToLibrary(e) {
-  e.preventDefault()
-  let obj = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value)
-  myLibrary.push(obj);
-
-  //Create
-  const div = document.createElement('div');
-  const button = document.createElement('button');
-  div.classList.add('book-card');
-  button.classList.add('remove-btn');
-  button.innerText = 'Delete';
-  button.addEventListener('click', removeBook)
-  console.log(button)
-  div.innerHTML = `
-  <h3 class="book-card__title">${obj.title}</h3>
-  <p class="book-card__author">${obj.author}</p>
-  <p class="book-card__pages">${obj.pages}</p>
-  <p class="book-card__read">${obj.read}</p>`;
-  div.appendChild(button)
-  bookCardContainer.appendChild(div);
-
-  //Clear
-  bookTitle.value = "", bookAuthor.value = "", bookPages.value = null, readStatus.value = "";
-}
-
+// Function declarations
 function displayBooks() {
-  return myLibrary.forEach(book => {
-    const div = document.createElement('div');
-    const button = document.createElement('button');
-    div.classList.add('book-card');
-    button.classList.add('remove-btn');
-    button.innerText = 'Delete';
-    button.addEventListener('click', removeBook)
-    console.log(button)
+  myLibrary.forEach(book => {
+    // create book card & delete button
+    const div = document.createElement('div')
+    const delBtn = document.createElement('button')
+
+    // Add text to delete button
+    delBtn.innerText = 'Delete'
+
+    // add class names to created elements
+    div.classList.add("book-card")
+    delBtn.classList.add('book-card__delete-btn')
+
+    // add delete to nodelist
+    delBtn.addEventListener('click', deleteBook)
+
     div.innerHTML = `
     <h3 class="book-card__title">${book.title}</h3>
     <p class="book-card__author">${book.author}</p>
     <p class="book-card__pages">${book.pages}</p>
-    <p class="book-card__read">${book.read}</p>`;
-    div.appendChild(button)
+    <p class="book-card__read">${book.readStatus}</p>
+    `
+    div.appendChild(delBtn)
+
     bookCardContainer.appendChild(div);
-
-
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  displayBooks();
-})
+function addBook(e) {
+  e.preventDefault()
+  // Define then add object to the array
+  let obj = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
+  myLibrary.push(obj)
 
-bookSubmit.addEventListener('click', addBookToLibrary)
+  // create book card & delete button
+  const div = document.createElement('div')
+  const delBtn = document.createElement('button')
 
-function removeBook(e) {
-  const searchBook = e.target.parentElement.firstElementChild.innerText
+  // Add text to delete button
+  delBtn.innerText = 'Delete'
 
+  // add class names to created elements
+  div.classList.add("book-card")
+  delBtn.classList.add('book-card__delete-btn')
+
+  // add delete to nodelist
+  delBtn.addEventListener('click', deleteBook)
+
+  div.innerHTML = `
+    <h3 class="book-card__title">${bookTitle.value}</h3>
+    <p class="book-card__author">${bookAuthor.value}</p>
+    <p class="book-card__pages">${bookPages.value}</p>
+    <p class="book-card__read">${readStatus.value}</p>
+    `
+  div.appendChild(delBtn)
+
+  bookCardContainer.appendChild(div);
+}
+
+function deleteBook(e) {
+  let bookTitle = e.target.parentElement.firstElementChild;
+  let bookToFind = bookTitle.innerText;
   myLibrary.forEach((book, ind) => {
-    if (book.title === searchBook) myLibrary.splice(ind, 1);
+    if (book.title === bookToFind) {
+      myLibrary.splice(ind, 1)
+      bookTitle.parentElement.remove()
+    }
   })
-
-  e.target.parentElement.remove()
 }
 
-const bookRemoveBtns = document.querySelectorAll(".remove-btn");
+
+// Event listeners
+// Load everything when DOM loads
+document.addEventListener("DOMContentLoaded", displayBooks)
+// Add book-card
+bookSubmit.addEventListener('click', addBook)
+// delete book-card
