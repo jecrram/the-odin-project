@@ -9,22 +9,33 @@ const bookSubmit = document.querySelector(".book-form__submit-btn");
 // Define array for all books
 let myLibrary = []
 
-// 1. The old way of creating objects - with constructor functions
-function Book(title, author, pages, readStatus) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.readStatus = readStatus
+// // 1. The old way of creating objects - with constructor functions
+// function Book(title, author, pages, readStatus) {
+//   this.title = title
+//   this.author = author
+//   this.pages = pages
+//   this.readStatus = readStatus
+// }
+
+// // Add method on the prototype so it's accessible to all sub-objects
+// Book.prototype.getInfo = () => `${this.title} by ${this.author}. ${this.pages} pages, ${this.readStatus}`
+
+// // Instantiating new objects
+// const theHobbit = new Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
+// const lordOfTheRings = new Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
+// const harryPotter = new Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
+
+// 2. Using factory functions
+const Book = (title, author, pages, readStatus) => {
+  const getInfo = () => `${this.title} by ${this.author}. ${this.pages} pages, ${this.readStatus}`;
+
+  return { title, author, pages, readStatus, getInfo }
 }
 
-// Add method on the prototype so it's accessible to all sub-objects
-Book.prototype.getInfo = () => `${this.title} by ${this.author}. ${this.pages} pages, ${this.readStatus}`
+const theHobbit = Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
+const lordOfTheRings = Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
+const harryPotter = Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
 
-
-// Instantiating new objects
-const theHobbit = new Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
-const lordOfTheRings = new Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
-const harryPotter = new Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
 
 // Inserting those objects into the array
 myLibrary = [theHobbit, lordOfTheRings, harryPotter]
@@ -100,10 +111,8 @@ function deleteBook(e) {
   })
 }
 
-
 // Event listeners
 // Load everything when DOM loads
 document.addEventListener("DOMContentLoaded", displayBooks)
 // Add book-card
 bookSubmit.addEventListener('click', addBook)
-// delete book-card
