@@ -27,22 +27,33 @@ let myLibrary = []
 
 // 2. Using factory functions
 const Book = (title, author, pages, readStatus) => {
-  const getInfo = () => `${this.title} by ${this.author}. ${this.pages} pages, ${this.readStatus}`;
+  const getInfo = () => console.log(`${title} by ${author}. ${pages} pages, ${readStatus}`);
 
-  return { title, author, pages, readStatus, getInfo }
+  return { title, author, pages, readStatus, getInfo } // since same variable + same object property we're creating, we use the shorthand instead of {title: title, author: author}
 }
 
+// Creating novel which inherits factory function property - getInfo
+const Novel = (title, author, pages, readStatus) => {
+  const { getInfo } = Book(title, author, pages, readStatus);
+
+  // To use the Book properties, you have to return them as well
+  return { title, author, pages, readStatus, getInfo }
+}
+const diaryNgPanget = Novel('Diary ng panget', 'jermoe', 42, 'Not yet read')
+
 const theHobbit = Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
-const lordOfTheRings = Book('LOTR', 'J. R. R. Tolkien', '941', 'Still reading')
-const harryPotter = Book('Harry Potter', 'J. K. Rowling', '302', 'Not yet read')
+const lordOfTheRings = Book('LOTR', 'J. R. R. Tolkien', 941, 'Still reading')
+const harryPotter = Book('Harry Potter', 'J. K. Rowling', 302, 'Not yet read')
+
 
 
 // Inserting those objects into the array
-myLibrary = [theHobbit, lordOfTheRings, harryPotter]
+myLibrary = [theHobbit, lordOfTheRings, harryPotter, diaryNgPanget]
 
 // Function declarations
 function displayBooks() {
   myLibrary.forEach(book => {
+    console.log(book)
     // create book card & delete button
     const div = document.createElement('div')
     const delBtn = document.createElement('button')
