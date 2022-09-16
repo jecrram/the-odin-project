@@ -39,8 +39,8 @@ const Novel = (title, author, pages, readStatus) => {
   // To use the Book properties, you have to return them as well
   return { title, author, pages, readStatus, getInfo }
 }
-const diaryNgPanget = Novel('Diary ng panget', 'jermoe', 42, 'Not yet read')
 
+const diaryNgPanget = Novel('Diary ng panget', 'jermoe', 42, 'Not yet read')
 const theHobbit = Book('The Hobbit', 'J. R. R. Tolkien', 542, 'Done reading')
 const lordOfTheRings = Book('LOTR', 'J. R. R. Tolkien', 941, 'Still reading')
 const harryPotter = Book('Harry Potter', 'J. K. Rowling', 302, 'Not yet read')
@@ -83,7 +83,7 @@ function displayBooks() {
 function addBook(e) {
   e.preventDefault()
   // Define then add object to the array
-  let obj = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
+  let obj = Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
   myLibrary.push(obj)
 
   // create book card & delete button
