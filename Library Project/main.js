@@ -5,6 +5,9 @@ const bookAuthor = document.querySelector("#book-author");
 const bookPages = document.querySelector("#book-pages");
 const readStatus = document.querySelector("#read-status");
 const bookSubmit = document.querySelector(".book-form__submit-btn");
+const modal = document.querySelector(".book-modal")
+const modalCloseBtn = document.querySelector(".close")
+const modalOpenBtn = document.querySelector(".btn--add-book")
 
 // Define array for all books
 let myLibrary = []
@@ -122,8 +125,20 @@ function deleteBook(e) {
   })
 }
 
+function closeModal() {
+  modal.classList.remove("active");
+}
+
+function openModal() {
+  modal.classList.add('active')
+}
+
 // Event listeners
 // Load everything when DOM loads
 document.addEventListener("DOMContentLoaded", displayBooks)
 // Add book-card
 bookSubmit.addEventListener('click', addBook)
+// Open modal
+modalOpenBtn.addEventListener('click', openModal)
+// Close modal
+modalCloseBtn.addEventListener('click', closeModal)
