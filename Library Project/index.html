@@ -14,28 +14,39 @@
   </head>
   <body>
     <section class="book-showcase">
+      <h2 class="book-showcase__title">The Library Project</h2>
       <div class="book-card-wrapper"> </div>
     </section>
     <section class="book-options">
       <div class="book-options__copy">
         <h2 class="book-options__title">Didn't find your book?</h2>
         <p class="book-options__text">Add your favorite book using the button below.</p>
+        <button class="btn--add-book">NEW BOOK</button>
       </div>
-      <button class="btn--add-book">NEW BOOK</button>
     </section>
     <!-- Modal for form -->
-    <div class="book-form-modal">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
-      <form action="submit" class="book-form" method="POST">
-        <input type="text" placeholder="Insert book name" id="book-name" />
-        <input type="text" placeholder="Insert author" id="book-author" />
-        <input type="number" placeholder="Insert page number" id="book-pages" />
-        <label for="read-status">Have you read the book?</label>
-        <input type="checkbox" name="read-status" id="read-status" />
-        <button class="book-form__submit-btn" type="submit">Add book</button>
-      </form>
-    </div>
+    <section class="book-modal active">
+      <div class="book-form-wrapper">
+        <span class="close">&times;</span>
+        <p>Insert book info here</p>
+        <form action="submit" class="book-form" method="POST">
+          <div class="form-controller">
+            <input type="text" placeholder="Insert book name" id="book-name" />
+          </div>
+          <div class="form-controller">
+            <input type="text" placeholder="Insert author" id="book-author" />
+          </div>
+          <div class="form-controller">
+            <input type="number" placeholder="Insert page number" id="book-pages" />
+          </div>
+          <div class="form-controller two-row">
+            <label for="read-status">Have you read the book?</label>
+            <input type="checkbox" name="read-status" id="read-status" />
+          </div>
+          <button class="book-form__submit-btn" type="submit">Add book</button>
+        </form>
+      </div>
+    </section>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

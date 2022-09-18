@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -8,6 +10,7 @@
 
 html {
   font-size: 62.5%; /* font-size set to 10px */
+  font-family: "Oswald", sans-serif;
 }
 
 /* Set core body defaults */
@@ -36,11 +39,19 @@ img {
 }
 
 .book-showcase {
-  padding-top: 6rem;
+  padding-top: 5rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.book-showcase__title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  font-size: 5rem;
 }
 
 .book-card-wrapper {
-  width: 90%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -48,10 +59,148 @@ img {
 }
 
 .book-card {
-  min-height: 220px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background: rgb(226, 241, 255);
+  background: rgb(237, 237, 237);
+  padding: 2rem 5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.book-card:hover {
+  background: rgb(83, 154, 220);
+  transform: scale(1.1);
+}
+
+.book-card__title,
+.book-card__author,
+.book-card__pages,
+.book-card__read {
+  margin-bottom: 0.8rem;
+}
+
+.book-card__title {
+  font-size: 3rem;
+  color: rgb(139, 139, 139);
+  margin-bottom: 2rem;
+}
+
+.book-card:hover .book-card__title,
+.book-card:hover .book-card__author,
+.book-card:hover .book-card__pages,
+.book-card:hover .book-card__read {
+  color: #fff;
+}
+
+.book-card__delete-btn,
+.btn--add-book,
+.book-form__submit-btn {
+  border-radius: 10px;
+  border: 0;
+  background-color: aquamarine;
+  padding: 0.8rem 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.book-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(219, 219, 219, 0.4);
+}
+
+.book-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-form-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  background-color: aliceblue;
+  overflow: auto;
+  padding: 10rem;
+  position: relative;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  font-size: 40px;
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+.close:hover,
+.book-card__delete-btn:hover,
+.btn--add-book:hover,
+.book-form__submit-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.book-modal p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.book-form input {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1.6rem;
+  padding: 1.2rem;
+  border: 0;
+}
+
+.book-options {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.book-options__copy {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.book-options__title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.book-options__text {
+  margin-bottom: 2rem;
+}
+
+.form-controller.two-row {
+  display: flex;
+}
+
+.form-controller label {
+  width: 100px;
+}
+
+#read-status {
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  transform: translateY(-50%);
+}
+
+#read-status:hover {
+  cursor: pointer;
 }
