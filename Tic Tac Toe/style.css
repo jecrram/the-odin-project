@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; /* font-size set to 10px */
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.section {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.gameboard-wrapper {
+  min-height: 80vh;
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.gameboard-spot {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
