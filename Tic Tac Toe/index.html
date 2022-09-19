@@ -5,21 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <section class="section">
       <div class="gameboard-wrapper">
         <div class="gameboard">
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
-          <div class="gameboard-spot">X</div>
+          <div
+            class="gameboard__spot gameboard__spot--left-edge gameboard__btn"
+          ></div>
+          <div class="gameboard__spot fa-solid fa-x gameboard__btn"></div>
+          <div
+            class="gameboard__spot gameboard__spot--right-edge fa-solid fa-x gameboard__btn"
+          ></div>
+          <div
+            class="gameboard__spot gameboard__spot--left-edge gameboard__spot--mid fa-solid fa-x gameboard__btn"
+          ></div>
+          <div
+            class="gameboard__spot gameboard__spot--mid fa-solid fa-o gameboard__btn"
+          ></div>
+          <div
+            class="gameboard__spot gameboard__spot--right-edge gameboard__spot--mid fa-solid fa-o gameboard__btn"
+          ></div>
+          <div
+            class="gameboard__spot gameboard__spot--left-edge fa-solid fa-x gameboard__btn"
+          ></div>
+          <div class="gameboard__spot fa-solid fa-x gameboard__btn"></div>
+          <div
+            class="gameboard__spot gameboard__spot--right-edge fa-solid fa-x gameboard__btn"
+          ></div>
         </div>
       </div>
     </section>
