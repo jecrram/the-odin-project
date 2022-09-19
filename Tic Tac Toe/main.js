@@ -1,25 +1,40 @@
 const gameBtns = document.querySelectorAll(".gameboard__btn");
 
-// let playerOne = [];
-// let playerTwo = [];
+const Player = (name, marker) => {
+  let score = [];
+  marker = marker;
 
-const Player = (name) => {
-  //   let score = [];
-  //   const addToScoreArray = () => {};
-  //   return { name };
+  const addToScoreArray = (e) => {
+    e.target.classList.add(`${marker}`, `fa-solid`);
+  };
+
+  return { name, marker, addToScoreArray };
 };
 
-const playerOne = Player("Jericho");
-const playerTwo = Player("Eriz");
+const playerOne = Player("Jericho", "fa-x");
+const playerTwo = Player("Eriz", "fa-o");
 
-// const Gameboard = () => {
+const Gameboard = () => {
+  let gameArray = [];
 
-//     const displayToGameboard
-// };
+  const checkWhosTurn = () => {
+    if (!gameArray) {
+    }
+  };
+
+  return { checkWhosTurn };
+};
+
+const ticTacToe = Gameboard("Tictactoe");
+
+ticTacToe.checkWhosTurn();
+
+// function checkWhosTurn() {
+//   let gameArray = [];
+
+//   gameArray.push();
+// }
 
 gameBtns.forEach((gameBtn) => {
-  gameBtn.addEventListener("click", function (e) {
-    e.target.classList.add("fa-solid", "fa-x");
-    e.target.classList.add("fa-solid", "fa-o");
-  });
+  gameBtn.addEventListener("click", playerOne.addToScoreArray);
 });
