@@ -1,40 +1,52 @@
 const gameBtns = document.querySelectorAll(".gameboard__btn");
 
-const Player = (name, marker) => {
-  let score = [];
+const player = (name, marker, playerTurn) => {
+  name = name;
   marker = marker;
+  playerTurn = playerTurn;
+  let score = [];
 
-  const addToScoreArray = (e) => {
-    e.target.classList.add(`${marker}`, `fa-solid`);
-  };
-
-  return { name, marker, addToScoreArray };
+  return { name, marker, playerTurn, score };
 };
 
-const playerOne = Player("Jericho", "fa-x");
-const playerTwo = Player("Eriz", "fa-o");
+const playerOne = player("Jericho", "fa-x", true);
+const playerTwo = player("Eriz", "fa-o", false);
 
-const Gameboard = () => {
-  let gameArray = [];
+const gameBoard = (() => {
+  board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  let winningPatterns = [
+    [`1`, "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["3", "6", "9"],
+    ["1", "5", "9"],
+    ["3", "5", "7"],
+  ];
+})();
 
-  const checkWhosTurn = () => {
-    if (!gameArray) {
+const displayController = (() => {
+  const markTheSpot = (e) => {
+    if (playerOne.playerTurn) {
+      e.target.classList.add(`${playerOne.marker}`, `fa-solid`);
+      playerOne.playerTurn = false;
+      playerTwo.playerTurn = true;
+      playerOne.score.push(e.target.attributes["data-spot"].value);
+      // console.log(board.indexOf(e.target.attributes["data-spot"].value));
+      // console.log(playerOne.score);
+      // console.dir(e.target.attributes["data-spot"].value);
+      // console.log(playerOne.score.push(e.target.classList));
+    } else {
+      e.target.classList.add(`${playerTwo.marker}`, `fa-solid`);
+      playerOne.playerTurn = true;
+      playerTwo.playerTurn = false;
     }
   };
 
-  return { checkWhosTurn };
-};
-
-const ticTacToe = Gameboard("Tictactoe");
-
-ticTacToe.checkWhosTurn();
-
-// function checkWhosTurn() {
-//   let gameArray = [];
-
-//   gameArray.push();
-// }
+  return { markTheSpot };
+})();
 
 gameBtns.forEach((gameBtn) => {
-  gameBtn.addEventListener("click", playerOne.addToScoreArray);
+  gameBtn.addEventListener("click", displayController.markTheSpot);
 });
