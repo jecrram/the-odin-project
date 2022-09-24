@@ -24,7 +24,24 @@ const gameBoard = (() => {
     ["1", "5", "9"],
     ["3", "5", "7"],
   ];
+
+  const checkWinner = () => {
+    let playerWin;
+    winningPatterns.forEach((pattern) => {
+      pattern.every((num) => {
+        console.log(pattern, num);
+        // console.log(pattern);
+        // console.log(playerWin, num, playerOne.score);
+        // playerWin = playerOne.score.includes(num);
+      });
+    });
+    return playerWin;
+  };
+
+  return { checkWinner };
 })();
+
+gameBoard.checkWinner();
 
 const displayController = (() => {
   const markTheSpot = (e) => {
@@ -33,14 +50,15 @@ const displayController = (() => {
       playerOne.playerTurn = false;
       playerTwo.playerTurn = true;
       playerOne.score.push(e.target.attributes["data-spot"].value);
-      // console.log(board.indexOf(e.target.attributes["data-spot"].value));
       // console.log(playerOne.score);
-      // console.dir(e.target.attributes["data-spot"].value);
-      // console.log(playerOne.score.push(e.target.classList));
+      // console.log(playerTwo.score);
     } else {
       e.target.classList.add(`${playerTwo.marker}`, `fa-solid`);
       playerOne.playerTurn = true;
       playerTwo.playerTurn = false;
+      playerTwo.score.push(e.target.attributes["data-spot"].value);
+      // console.log(playerOne.score);
+      // console.log(playerTwo.score);
     }
   };
 
