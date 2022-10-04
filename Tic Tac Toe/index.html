@@ -16,40 +16,25 @@
   </head>
   <body>
     <section class="section">
+      <div class="section__copy">
+        <h1 class="section__title">Tic Tac Toe</h1>
+        <p class="section__status">Player One's Turn</p>
+      </div>
       <div class="gameboard-wrapper">
+        <h2></h2>
         <div class="gameboard">
-          <div
-            class="gameboard__spot gameboard__spot--left-edge gameboard__btn"
-            data-spot="1"
-          ></div>
-          <div class="gameboard__spot gameboard__btn" data-spot="2"></div>
-          <div
-            class="gameboard__spot gameboard__spot--right-edge gameboard__btn"
-            data-spot="3"
-          ></div>
-          <div
-            class="gameboard__spot gameboard__spot--left-edge gameboard__spot--mid gameboard__btn"
-            data-spot="4"
-          ></div>
-          <div
-            class="gameboard__spot gameboard__spot--mid gameboard__btn"
-            data-spot="5"
-          ></div>
-          <div
-            class="gameboard__spot gameboard__spot--right-edge gameboard__spot--mid gameboard__btn"
-            data-spot="6"
-          ></div>
-          <div
-            class="gameboard__spot gameboard__spot--left-edge gameboard__btn"
-            data-spot="7"
-          ></div>
-          <div class="gameboard__spot gameboard__btn" data-spot="8"></div>
-          <div
-            class="gameboard__spot gameboard__spot--right-edge gameboard__btn"
-            data-spot="9"
-          ></div>
+          <div class="gameboard__spot gameboard__spot--left-edge gameboard__btn" data-index="0"></div>
+          <div class="gameboard__spot gameboard__btn" data-index="1"></div>
+          <div class="gameboard__spot gameboard__spot--right-edge gameboard__btn" data-index="2"></div>
+          <div class="gameboard__spot gameboard__spot--left-edge gameboard__spot--mid gameboard__btn" data-index="3"></div>
+          <div class="gameboard__spot gameboard__spot--mid gameboard__btn" data-index="4"></div>
+          <div class="gameboard__spot gameboard__spot--right-edge gameboard__spot--mid gameboard__btn" data-index="5"></div>
+          <div class="gameboard__spot gameboard__spot--left-edge gameboard__btn" data-index="6"></div>
+          <div class="gameboard__spot gameboard__btn" data-index="7"></div>
+          <div class="gameboard__spot gameboard__spot--right-edge gameboard__btn" data-index="8"></div>
         </div>
       </div>
+      <button id="restart-btn">Restart</button>
     </section>
     <script src="./main.js"></script>
   </body>
