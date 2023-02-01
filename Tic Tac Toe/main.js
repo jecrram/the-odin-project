@@ -15,7 +15,7 @@ const playerTwo = player("Eriz", "fa-o", false);
 const gameBoard = (() => {
   board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let winningPatterns = [
-    [`1`, "2", "3"],
+    ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", "9"],
     ["1", "4", "7"],
@@ -27,14 +27,7 @@ const gameBoard = (() => {
 
   const checkWinner = () => {
     let playerWin;
-    winningPatterns.forEach((pattern) => {
-      pattern.every((num) => {
-        console.log(pattern, num);
-        // console.log(pattern);
-        // console.log(playerWin, num, playerOne.score);
-        // playerWin = playerOne.score.includes(num);
-      });
-    });
+    winningPatterns.forEach((pattern) => {});
     return playerWin;
   };
 
