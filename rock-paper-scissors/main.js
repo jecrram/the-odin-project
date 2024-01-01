@@ -1,59 +1,77 @@
-let playerScore = 0;
-let computerScore = 0;
+function getComputerHand() {
+  let handList = ["rock", "paper", "scissors"];
 
-function getComputerChoice() {
-  let choices = ["Rock", "Paper", "Scissors"];
+  let itemNumber = Math.floor(Math.random() * handList.length);
 
-  let rand = Math.random();
-
-  return choices[Math.floor(rand * choices.length)];
+  return handList[itemNumber];
 }
 
-function countScore(winner) {
-  if (winner === "player") {
-    playerScore++;
-  } else if (winner === "computer") {
-    computerScore++;
-  }
+function getPlayerHand() {
+  let playerBtns = document.querySelectorAll(".player-hand");
+  let playerHand;
 
-  console.log(playerScore, computerScore);
+  playerBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      playerHand = btn.textContent;
+    });
+  });
 }
+// let playerScore = 0;
+// let computerScore = 0;
 
-function playRound(playerSelection, computerSelection) {
-  let playerHand = playerSelection.toLowerCase();
-  let computerHand = computerSelection.toLowerCase();
-  let winner;
+// function getComputerChoice() {
+//   let choices = ["Rock", "Paper", "Scissors"];
 
-  playerOutput = playerHand.charAt(0).toUpperCase() + playerHand.slice(1);
-  computerOutput = computerHand.charAt(0).toUpperCase() + computerHand.slice(1);
+//   let rand = Math.random();
 
-  if (playerHand === computerHand) {
-    winner = `tie`;
-    console.log("It's a tie!");
-  } else if (
-    (playerHand === "rock" && computerHand === "scissors") ||
-    (playerHand === "paper" && computerHand === "rock") ||
-    (playerHand === "scissors" && computerHand === "paper")
-  ) {
-    winner = `player`;
-    console.log(`You win! ${playerOutput} beats ${computerOutput}!`);
-  } else {
-    winner = `computer`;
-    console.log(`You lose! ${computerOutput} beats ${playerOutput}!`);
-  }
+//   return choices[Math.floor(rand * choices.length)];
+// }
 
-  countScore(winner);
-}
+// function countScore(winner) {
+//   if (winner === "player") {
+//     playerScore++;
+//   } else if (winner === "computer") {
+//     computerScore++;
+//   }
 
-function game() {
-  while (playerScore !== 3 && computerScore !== 3) {
-    // let playerSelection = prompt("What are you playing?");
-    let computerSelection = getComputerChoice();
+//   console.log(playerScore, computerScore);
+// }
 
-    playRound(playerSelection, computerSelection);
-  }
+// function playRound(playerSelection, computerSelection) {
+//   let playerHand = playerSelection.toLowerCase();
+//   let computerHand = computerSelection.toLowerCase();
+//   let winner;
 
-  console.log(`Final Score: ${playerScore} - ${computerScore}`);
-}
+//   playerOutput = playerHand.charAt(0).toUpperCase() + playerHand.slice(1);
+//   computerOutput = computerHand.charAt(0).toUpperCase() + computerHand.slice(1);
 
-console.log(game());
+//   if (playerHand === computerHand) {
+//     winner = `tie`;
+//     console.log("It's a tie!");
+//   } else if (
+//     (playerHand === "rock" && computerHand === "scissors") ||
+//     (playerHand === "paper" && computerHand === "rock") ||
+//     (playerHand === "scissors" && computerHand === "paper")
+//   ) {
+//     winner = `player`;
+//     console.log(`You win! ${playerOutput} beats ${computerOutput}!`);
+//   } else {
+//     winner = `computer`;
+//     console.log(`You lose! ${computerOutput} beats ${playerOutput}!`);
+//   }
+
+//   countScore(winner);
+// }
+
+// function game() {
+//   while (playerScore !== 3 && computerScore !== 3) {
+//     // let playerSelection = prompt("What are you playing?");
+//     let computerSelection = getComputerChoice();
+
+//     playRound(playerSelection, computerSelection);
+//   }
+
+//   console.log(`Final Score: ${playerScore} - ${computerScore}`);
+// }
+
+// console.log(game());
