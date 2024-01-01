@@ -1,3 +1,7 @@
+let playerBtns = document.querySelectorAll(".player-hand");
+let playerScore = 0,
+  computerScore = 0;
+
 function getComputerHand() {
   let handList = ["rock", "paper", "scissors"];
 
@@ -6,72 +10,46 @@ function getComputerHand() {
   return handList[itemNumber];
 }
 
-function getPlayerHand() {
-  let playerBtns = document.querySelectorAll(".player-hand");
-  let playerHand;
-
-  playerBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      playerHand = btn.textContent;
-    });
-  });
+function getPlayerHand(hand) {
+  return hand.target.innerText;
 }
-// let playerScore = 0;
-// let computerScore = 0;
 
-// function getComputerChoice() {
-//   let choices = ["Rock", "Paper", "Scissors"];
+playerBtns.forEach((playerBtn) => {
+  playerBtn.addEventListener("click", (e) => {
+    let playerHand;
+    let computerHand;
 
-//   let rand = Math.random();
+    computerHand = getComputerHand().toLowerCase();
+    playerHand = getPlayerHand(e).toLowerCase();
 
-//   return choices[Math.floor(rand * choices.length)];
-// }
+    checkGameStatus(playerHand, computerHand);
+  });
+});
 
-// function countScore(winner) {
-//   if (winner === "player") {
-//     playerScore++;
-//   } else if (winner === "computer") {
-//     computerScore++;
-//   }
+function updateScore(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    // console.log("It's a tie");
+  } else if (
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "paper" && computerChoice === "rock") ||
+    (playerChoice === "scissors" && computerChoice === "paper")
+  ) {
+    playerScore++;
+    // console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+  } else {
+    computerScore++;
+    // console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
+  }
+}
 
-//   console.log(playerScore, computerScore);
-// }
-
-// function playRound(playerSelection, computerSelection) {
-//   let playerHand = playerSelection.toLowerCase();
-//   let computerHand = computerSelection.toLowerCase();
-//   let winner;
-
-//   playerOutput = playerHand.charAt(0).toUpperCase() + playerHand.slice(1);
-//   computerOutput = computerHand.charAt(0).toUpperCase() + computerHand.slice(1);
-
-//   if (playerHand === computerHand) {
-//     winner = `tie`;
-//     console.log("It's a tie!");
-//   } else if (
-//     (playerHand === "rock" && computerHand === "scissors") ||
-//     (playerHand === "paper" && computerHand === "rock") ||
-//     (playerHand === "scissors" && computerHand === "paper")
-//   ) {
-//     winner = `player`;
-//     console.log(`You win! ${playerOutput} beats ${computerOutput}!`);
-//   } else {
-//     winner = `computer`;
-//     console.log(`You lose! ${computerOutput} beats ${playerOutput}!`);
-//   }
-
-//   countScore(winner);
-// }
-
-// function game() {
-//   while (playerScore !== 3 && computerScore !== 3) {
-//     // let playerSelection = prompt("What are you playing?");
-//     let computerSelection = getComputerChoice();
-
-//     playRound(playerSelection, computerSelection);
-//   }
-
-//   console.log(`Final Score: ${playerScore} - ${computerScore}`);
-// }
-
-// console.log(game());
+function checkGameStatus(playerHand, computerHand) {
+  if (playerScore !== 3 && computerScore !== 3) {
+    updateScore(playerHand, computerHand);
+  } else {
+    if (playerScore > computerScore) {
+      console.log("You Win!");
+    } else {
+      console.log("You Lose!");
+    }
+  }
+}
