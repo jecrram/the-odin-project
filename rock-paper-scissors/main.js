@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   while (playerScore !== 3 && computerScore !== 3) {
-    let playerSelection = prompt("What are you playing?");
+    // let playerSelection = prompt("What are you playing?");
     let computerSelection = getComputerChoice();
 
     playRound(playerSelection, computerSelection);
