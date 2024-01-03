@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+
+.grid-item:hover {
+  background: blue;
+}
