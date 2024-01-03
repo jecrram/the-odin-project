@@ -22,11 +22,24 @@ playerBtns.forEach((playerBtn) => {
     computerHand = getComputerHand().toLowerCase();
     playerHand = getPlayerHand(e).toLowerCase();
 
-    checkGameStatus(playerHand, computerHand);
+    checkRoundWinner(playerHand, computerHand);
   });
 });
 
 function updateScore(playerChoice, computerChoice) {
+  let playerScoreUI = document.querySelector(`.player-score`);
+  let compScoreUI = document.querySelector(".computer-score");
+
+  let handsUI = document.querySelector(".hand-container");
+  let div1 = document.createElement("div");
+  div1.innerText = playerChoice;
+
+  let div2 = document.createElement("div");
+  div2.innerText = computerChoice;
+
+  handsUI.appendChild(div1);
+  handsUI.appendChild(div2);
+
   if (playerChoice === computerChoice) {
     // console.log("It's a tie");
   } else if (
@@ -35,21 +48,26 @@ function updateScore(playerChoice, computerChoice) {
     (playerChoice === "scissors" && computerChoice === "paper")
   ) {
     playerScore++;
+    playerScoreUI.innerText = playerScore;
+
     // console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
   } else {
     computerScore++;
+    compScoreUI.innerText = computerScore;
     // console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
   }
 }
 
-function checkGameStatus(playerHand, computerHand) {
+function checkRoundWinner(playerHand, computerHand) {
+  let winnerUI = document.querySelector(".winner-text");
+
   if (playerScore !== 3 && computerScore !== 3) {
     updateScore(playerHand, computerHand);
   } else {
     if (playerScore > computerScore) {
-      console.log("You Win!");
+      winnerUI.innerText = "Player Wins";
     } else {
-      console.log("You Lose!");
+      winnerUI.innerText = "Comp Wins";
     }
   }
 }
