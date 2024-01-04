@@ -1,14 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.grid-item {
+.flex-item {
   border: 1px solid black;
-  width: 200px;
-  height: 200px;
+  width: 33.33%;
+  aspect-ratio: 1;
 }
 
-.grid-item:hover {
+.flex-item--hover {
   background: blue;
 }
