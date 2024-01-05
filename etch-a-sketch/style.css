@@ -1,19 +1,46 @@
-* {
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.headline {
+  margin-bottom: 2.4rem;
+}
+
+.btn--resize {
+  background-color: blue;
+  border: 0;
+  color: white;
+  font-size: 1.6rem;
+  padding: 0.8em 1.6em;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 40rem;
+  height: 40rem;
 }
 
-.flex-item {
-  border: 1px solid black;
-  width: 33.33%;
-  aspect-ratio: 1;
+.cell {
+  border: 1px solid rgb(210, 210, 210);
+  width: calc(100% / 16);
+  height: calc(100% / 16);
 }
 
-.flex-item--hover {
+.cell--colored {
   background: blue;
 }
