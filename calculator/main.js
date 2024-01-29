@@ -2,13 +2,13 @@ let operands = document.querySelectorAll(".operand");
 let operators = document.querySelectorAll(".operator");
 let clearBtn = document.querySelector(".clear");
 let displayScreen = document.querySelector(".display-screen");
+let equalBtn = document.querySelector(".equal");
 
 let percentBtn = document.querySelector(".percent");
 
 let signBtn = document.querySelector(".sign");
 
 let decimalBtn = document.querySelector(".decimal");
-let equalBtn = document.querySelector(".equal");
 
 let firstNumber = "",
   operation = "",
@@ -43,6 +43,12 @@ operators.forEach((operator) => {
 clearBtn.addEventListener("click", (el) => {
   displayScreen.innerText = "";
   clearData();
+});
+
+equalBtn.addEventListener("click", (el) => {
+  if (operation !== "" && firstNumber && secondNumber) {
+    calculate(firstNumber, operation, secondNumber);
+  }
 });
 
 function calculate(a, opSymbol, b) {
@@ -88,9 +94,16 @@ function subtract(a, b) {
 }
 
 function divide(a, b) {
-  result = parseInt(a) / parseInt(b);
-  firstNumber = result.toString();
-  secondNumber = "";
+  let result;
+  console.log(a, b);
+  if (b === "0") {
+    console.log("hello");
+    result = "Not a Number";
+  } else if (b !== "0") {
+    result = parseInt(a) / parseInt(b);
+    firstNumber = result.toString();
+    secondNumber = "";
+  }
 
   displayResults(result);
 }
@@ -102,5 +115,10 @@ function clearData() {
 }
 
 function displayResults(result) {
-  displayScreen.innerText = result;
+  if (isNaN(result)) {
+    displayScreen.innerText = result;
+    clearData();
+  } else {
+    displayScreen.innerText = Math.round(result * 100) / 100;
+  }
 }
